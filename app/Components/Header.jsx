@@ -1,23 +1,24 @@
 import { View, Text ,TextInput, SafeAreaView, StyleSheet } from 'react-native'
 import colors from '../config/colors'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faBars, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 function Header() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-            <FontAwesomeIcon icon={faBars} size={18} color={colors.white} />
+            <Icon name='menu' size={27} color={colors.white} />
             <View style={styles.searchbar}>
             <TextInput 
-                placeholder='Search' 
+                placeholder='Search by name ...' 
                 placeholderTextColor={colors.grey} 
                 style={[ styles.searchinput,{zIndex: 1}]} 
                
             />    
-            <FontAwesomeIcon icon={faSearch} size={12} color={colors.blue} style={{position: 'absolute', right: 7}} />        
+ 
+            <Icon name="search" size={16} color={colors.grey} style={{position: 'absolute', right: 7}} />         
             </View>
             <View style={styles.user}>
-                <FontAwesomeIcon icon={faUser} size={18} color={colors.white} />
+                <Icon name="perm-identity" size={27} color={colors.white} />                
                 <Text style={{color: colors.white, fontSize: 11}}>Hosea M.</Text>
             </View>
             </View>
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
     searchbar: {
-        width: 160,
+        width: 170,
         height: 25,        
         backgroundColor: colors.white,
         borderRadius: 10,
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     user:{
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 5
+        
     },
 })
 export default Header
