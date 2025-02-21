@@ -1,11 +1,20 @@
-import { Text, View, StyleSheet,Platform,StatusBar } from "react-native";
+import { Text, View, StyleSheet,Platform,StatusBar, TouchableWithoutFeedback } from "react-native";
 import Header from "../Components/Header";
 import DashboardStatistics from "../Components/DashboardStatistics";
 import colors from "../config/colors";
+import { NavContext } from "../Contexts/navContext";
+import { useContext } from "react";
 function Dashboard() {
+    const {showMenu, setShowMenu} = useContext(NavContext);
     return (
         <View style={sytles.container}>
             <Header />
+            <TouchableWithoutFeedback
+            onPress={() => {
+                setShowMenu(false);
+
+            }}
+            >
             <View style={sytles.dashboardinfor}>
                 <Text style={{color: colors.blue, fontSize: 20, fontWeight: '900', marginLeft: 20, marginBottom: 20}} >Dashboard</Text>
                 <View style={sytles.statistics}>
@@ -13,7 +22,9 @@ function Dashboard() {
                     <DashboardStatistics icon={'inventory'} value={5} title={'Assets'}/>
                     <DashboardStatistics icon={'category'} value={3} title={'Categories'} />        
                 </View>
-            </View>
+            </View>            
+
+            </TouchableWithoutFeedback>
         </View>
     );
 }

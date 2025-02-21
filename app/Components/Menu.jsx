@@ -18,8 +18,8 @@ const styles= StyleSheet.create({
         width: '75%',
         height: '100%',
         backgroundColor: colors.blue,
-        zIndex: 1, 
-        elevation: 5
+        zIndex: 2, 
+        elevation: 10
     },
     logoContainer:{
         width: '100%',

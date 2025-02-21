@@ -1,18 +1,38 @@
-import { View, Text ,TextInput, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, Dimensions ,TextInput, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import colors from '../config/colors'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { NavContext } from '../Contexts/navContext';
 import Menu from './Menu';
 function Header() {
-    const [showMenu, setShowMenu] = useState(false);
+    const {showMenu, setShowMenu} = useContext(NavContext);
+    const screenWidth = Dimensions.get('window').width;
+    const screenHeight = Dimensions.get('window').height;
     function handlePress() {
         setShowMenu(!showMenu);
     }
     return (
         <SafeAreaView style={styles.container}>
-            <TouchableWithoutFeedback onPress={handlePress}>
+            <TouchableWithoutFeedback style={{zIndex: 1, elevation:5}} onPress={(event)=> {
+                  const { locationX, locationY } = event.nativeEvent;
+                  const menuWidth = screenWidth * 0.75;
+                  const menuHeight = screenHeight;
+                  if (locationX > menuWidth || locationY > menuHeight) {
+                    setShowMenu(false);
+                  }
+                  
+            }}>
                  <View style={{flex: 1,elevation: 5}}>
-                 { showMenu ? <Menu /> : null}
+                 { showMenu ? (
+                    <TouchableWithoutFeedback
+                    
+                    style={styles.menu}
+                    onPress={(event)=> {
+                        event.stopPropagation();
+                        setShowMenu(true)}}
+                    >
+                    <Menu />
+                 </TouchableWithoutFeedback>) : null}
             <View style={styles.header}>
             <Icon onPress={handlePress} name='menu' size={27} color={colors.white} />
             <View style={styles.searchbar}>
@@ -75,6 +95,15 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         
+    },
+    menu:{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '75%',
+        height: '100%',
+        zIndex: 10,
+        elevation: 5,        
     },
 })
 export default Header
