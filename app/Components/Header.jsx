@@ -47,7 +47,7 @@ function Header() {
             </View>
             <View style={styles.user}>
                 <Icon name="perm-identity" size={27} color={colors.white} />                
-                <Text style={{color: colors.white, fontSize: 11}}>Hosea M.</Text>
+                <Text style={{color: colors.white, fontSize: 12}}>Logout</Text>
             </View>
             </View>       
                  </View>   
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     user:{
         flexDirection: 'column',
         alignItems: 'center',
-        
+                
     },
     menu:{
         position: 'absolute',
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         left: 0,
         width: '75%',
         height: '100%',
-        zIndex: 10,
+        zIndex: 2,
         elevation: 5,        
     },
 })
