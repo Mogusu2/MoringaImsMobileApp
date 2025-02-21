@@ -1,17 +1,25 @@
-import { View, Text ,TextInput, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text ,TextInput, SafeAreaView, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import colors from '../config/colors'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { useState } from 'react';
+import Menu from './Menu';
 function Header() {
+    const [showMenu, setShowMenu] = useState(false);
+    function handlePress() {
+        setShowMenu(!showMenu);
+    }
     return (
         <SafeAreaView style={styles.container}>
+            <TouchableWithoutFeedback onPress={handlePress}>
+                 <View style={{flex: 1,elevation: 5}}>
+                 { showMenu ? <Menu /> : null}
             <View style={styles.header}>
-            <Icon name='menu' size={27} color={colors.white} />
+            <Icon onPress={handlePress} name='menu' size={27} color={colors.white} />
             <View style={styles.searchbar}>
             <TextInput 
                 placeholder='Search by name ...' 
                 placeholderTextColor={colors.grey} 
-                style={[ styles.searchinput,{zIndex: 1}]} 
+                style={[ styles.searchinput,{zIndex: 2}]} 
                
             />    
  
@@ -21,7 +29,10 @@ function Header() {
                 <Icon name="perm-identity" size={27} color={colors.white} />                
                 <Text style={{color: colors.white, fontSize: 11}}>Hosea M.</Text>
             </View>
-            </View>
+            </View>       
+                 </View>   
+            </TouchableWithoutFeedback>
+
         </SafeAreaView>
     )
 
@@ -51,12 +62,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        zIndex: 2
     },
     searchinput: {
         fontSize: 12,
         width: '100%',
         height: 35,
-        color: colors.black
+        color: colors.black,
+        
     },
     user:{
         flexDirection: 'column',
