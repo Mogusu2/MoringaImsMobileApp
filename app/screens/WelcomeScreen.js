@@ -1,16 +1,24 @@
+import { useEffect } from "react";
 import { ImageBackground, StyleSheet, Image,View } from "react-native"
 
-function WelcomeScreen() {
+function WelcomeScreen({navigation}) {
+  
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Dashboard')
+    },3000)
+  },[navigation])
+
   return (
-    <View
+    <ImageBackground
       style={styles.background}
-      source={require('../assets/cover.jpg')}
+      
     >
       <Image
         style={styles.logo}
         source={require('../assets/logo.png')}
       />
-    </View>
+    </ImageBackground>
   )
 }
 
