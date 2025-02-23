@@ -31,7 +31,7 @@ function Menu(){
             </View>
             <MenuItem icon={'dashboard-customize'} title={'Dashboard'} />
             <MenuItem screen ={'AddAsset'} navigation={navigation}  icon={'add-circle-outline'} title={'Add asset'} />
-            <MenuItem icon={'inventory-2'} title={'Borrow asset'} />
+            <MenuItem screen={'BorrowAsset'} navigation={navigation} icon={'inventory-2'} title={'Borrow asset'} />
             <MenuItem icon={'assignment'} title={'Return asset'} />
             <MenuItem icon={'notifications'} title={'Notifications'} />
             <TouchableOpacity style={styles.profile}

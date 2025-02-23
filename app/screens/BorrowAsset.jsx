@@ -7,7 +7,7 @@ import { CameraView } from "expo-camera";
 import { Camera } from "expo-camera";
 import { useNavigation } from "@react-navigation/native";
 
-function AddAsset() {
+function BorrowAsset() {
   const navigation = useNavigation();
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraReady, setCameraReady] = useState(false);
@@ -54,7 +54,7 @@ function AddAsset() {
               fontWeight: "900",
             }}
           >
-            Add asset
+            Borrow asset
           </Text>
         </View>
         
@@ -149,4 +149,4 @@ const styles = StyleSheet.create({
    
   }
 });
-export default AddAsset;
+export default BorrowAsset;
