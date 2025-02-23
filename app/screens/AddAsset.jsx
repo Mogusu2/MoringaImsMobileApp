@@ -1,17 +1,11 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  Dimensions,
-} from "react-native";
+import {  View,Text,StyleSheet,Platform,StatusBar, Dimensions,} from "react-native";
 import Header from "../Components/Header";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import colors from "../config/colors";
 import { useEffect, useState } from "react";
 import { CameraView } from "expo-camera";
 import { Camera } from "expo-camera";
+
 
 function AddAsset() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -62,19 +56,65 @@ function AddAsset() {
             Add asset
           </Text>
         </View>
-        <Text style={{ marginTop: 20, marginBottom: 5,color: colors.blue, fontSize: 15, marginLeft: "10%", fontWeight: "900"}}>Scan the Barcode:</Text>
+        
         <View style={styles.camera}>
           {hasPermission ? (
             <CameraView
-              style={{width: width * 0.9, height: width / (4 / 3),borderWidth: 1, boarderRadius: 20, borderColor: colors.blue, alignSelf: "center", }}
+              style={{
+                marginTop: 100,  
+                width: width * 0.9,
+                height: height * 0.7,
+                borderWidth: 1,
+                borderRadius: 20,
+                borderColor: colors.blue,
+                alignSelf: "center",
+              }}
               type="back"
+              barCodeScannerSettings={{
+                barCodeScannerEnabled: true,
+              }}
+              onBarcodeScanned={({ data }) => {
+                console.log("Barcode scanned");
+                console.log(data);
+              }}
               ratio="auto"
               onCameraReady={() => {
-                
                 setCameraReady(true);
               }}
             >
-              {cameraReady ? <Text>Camera is ready</Text> : null}
+              {cameraReady ? (
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <View
+                    style={{
+                      width: 200,
+                      height: 200,
+                      borderWidth: 2,
+                      borderColor: colors.orange,
+                      borderRadius: 10,
+                    }}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "bold",
+                      color: colors.white,
+                      marginTop: 20,
+                    }}
+                  >
+                    Scan the barcode/ QR code
+                  </Text>
+                </View>
+              ) : null}
             </CameraView>
           ) : (
             <Text>No Camera Access</Text>
@@ -102,7 +142,7 @@ const styles = StyleSheet.create({
   },
   camera:{    
     alignSelf: "center",
-    height: "fit-content",
+    height : "70%",
     justifyContent: "center",
     alignItems: "center",
    
