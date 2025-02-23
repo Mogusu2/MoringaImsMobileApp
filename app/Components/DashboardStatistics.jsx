@@ -4,9 +4,9 @@ import colors from "../config/colors";
 function DashboardStatistics({icon, title, value}) {
     return (
         <View style={styles.container}>
-            <Icon name={icon} style={{marginTop: 5}} size={50} color={colors.darkerShadeOfWhite} />
-            <Text style={{color: colors.darkerShadeOfWhite, fontSize: 12, fontWeight: '900'}} >{value}</Text>
-            <Text style={{color: colors.darkerShadeOfWhite, paddingBottom: 7 ,fontSize: 15, fontWeight: '900'}} >{title}</Text>
+            <Icon name={icon} style={{marginTop: 5}} size={50} color={colors.white} />
+            <Text style={{color: colors.white, fontSize: 12, fontWeight: '900'}} >{value}</Text>
+            <Text style={{color: colors.white, paddingBottom: 7 ,fontSize: 15, fontWeight: '900'}} >{title}</Text>
             
         </View>
     );
