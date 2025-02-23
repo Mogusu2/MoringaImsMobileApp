@@ -45,7 +45,7 @@ function BorrowAsset() {
             justifyContent: "center",
           }}
         >
-          <Icon name="add-circle-outline" size={25} color={colors.orange} />
+          <Icon name="inventory-2" size={25} color={colors.orange} />
           <Text
             style={{
               color: colors.blue,

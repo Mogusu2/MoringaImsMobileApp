@@ -1,7 +1,6 @@
 import { View,Image,Text,StyleSheet, Dimensions, TouchableOpacity } from "react-native"
 import colors from "../config/colors"
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Profile from "../screens/Profile";
 import { useNavigation } from '@react-navigation/native';
 import { useContext } from "react"
 import { NavContext } from "../Contexts/navContext"
@@ -29,10 +28,10 @@ function Menu(){
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/darkLogo.png')} />
             </View>
-            <MenuItem icon={'dashboard-customize'} title={'Dashboard'} />
+            <MenuItem screen={'Dashboard'} navigation={navigation} icon={'dashboard-customize'} title={'Dashboard'} />
             <MenuItem screen ={'AddAsset'} navigation={navigation}  icon={'add-circle-outline'} title={'Add asset'} />
             <MenuItem screen={'BorrowAsset'} navigation={navigation} icon={'inventory-2'} title={'Borrow asset'} />
-            <MenuItem icon={'assignment'} title={'Return asset'} />
+            <MenuItem screen={'ReturnAsset'} navigation={navigation} icon={'assignment'} title={'Return asset'} />
             <MenuItem icon={'notifications'} title={'Notifications'} />
             <TouchableOpacity style={styles.profile}
             onPress={() => {

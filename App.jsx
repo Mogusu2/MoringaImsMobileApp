@@ -9,6 +9,7 @@ import Menu from './app/Components/Menu';
 import AddAsset from './app/screens/AddAsset';
 import BorrowAsset from './app/screens/BorrowAsset';
 import NewAsset from './app/screens/NewAsset';
+import ReturnAsset from './app/screens/ReturnAsset';
 import { useNavigation } from '@react-navigation/native'
 export default function App() { 
   const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="AddAsset" component={AddAsset} options={{headerShown: false}} />
         <Stack.Screen name="NewAsset" component={NewAsset} options={{headerShown: false}} />
         <Stack.Screen name="BorrowAsset" component={BorrowAsset} options={{headerShown: false}} />
+        <Stack.Screen name="ReturnAsset" component={ReturnAsset} options={{headerShown: false}} />  
       </Stack.Navigator>
     </NavigationContainer>
   );
