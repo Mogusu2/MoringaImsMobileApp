@@ -76,7 +76,7 @@ function BorrowAsset() {
               }}
               onBarcodeScanned={({ data }) => {
                
-                navigation.navigate("NewAsset", { data: data });
+                navigation.navigate("AssetInformation", { data: data });
               }}
               ratio="auto"
               onCameraReady={() => {
