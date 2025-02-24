@@ -41,7 +41,7 @@ const sytles = StyleSheet.create({
         left:0,
         width: '100%',
         marginTop: 20,
-        zIndex:1
+        zIndex:-1
         
     },
     statistics: {

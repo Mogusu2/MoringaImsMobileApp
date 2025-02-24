@@ -1,29 +1,43 @@
 import { View,Image,Text,StyleSheet, Dimensions, TouchableOpacity } from "react-native"
 import colors from "../config/colors"
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Profile from "../screens/Profile";
 import { useNavigation } from '@react-navigation/native';
-function MenuItem({icon, title}) {
+import { useContext } from "react"
+import { NavContext } from "../Contexts/navContext"
+function MenuItem({icon, title,navigation,screen}) {
+    const {setShowMenu} = useContext(NavContext);
     return(
-        <View style={styles.menuItems}>
-            <Icon name={icon} size={23} color={colors.white} />
+        <TouchableOpacity style={styles.item} onPress={() => {
+            setShowMenu(false);
+            setTimeout(() => {
+                navigation.navigate({name: screen})
+            },100)
+            }}>
+            <View style={styles.menuItems} >
+              <Icon name={icon} size={23} color={colors.white} />
             <Text style={{color: colors.white, fontSize: 15, fontWeight: '900'}}>{title}</Text>
-        </View>
+        </View>        
+        </TouchableOpacity>
         )
 }
 function Menu(){
     const navigation = useNavigation();
+    const {setShowMenu} = useContext(NavContext);
     return(
         <View style={styles.menu}>
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/darkLogo.png')} />
             </View>
-            <MenuItem icon={'dashboard-customize'} title={'Dashboard'} />
-            <MenuItem icon={'add-circle-outline'} title={'Add asset'} />
-            <MenuItem icon={'inventory-2'} title={'Borrow asset'} />
-            <MenuItem icon={'assignment'} title={'Return asset'} />
+            <MenuItem screen={'Dashboard'} navigation={navigation} icon={'dashboard-customize'} title={'Dashboard'} />
+            <MenuItem screen ={'AddAsset'} navigation={navigation}  icon={'add-circle-outline'} title={'Add asset'} />
+            <MenuItem screen={'BorrowAsset'} navigation={navigation} icon={'inventory-2'} title={'Borrow asset'} />
+            <MenuItem screen={'ReturnAsset'} navigation={navigation} icon={'assignment'} title={'Return asset'} />
             <MenuItem icon={'notifications'} title={'Notifications'} />
-            <TouchableOpacity style={styles.profile} onPress={() => navigation.navigate('Profile')}>
+            <TouchableOpacity style={styles.profile}
+            onPress={() => {
+                setShowMenu(false);
+                navigation.navigate('Profile')
+            }}>
                 <Icon name={'account-circle'} size={31} color={colors.white} />
                 <Text style={{color: colors.white, fontSize: 14, fontWeight: '500'}} >Hosea Karanja</Text>
             </TouchableOpacity>
