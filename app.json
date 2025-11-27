@@ -13,11 +13,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "permissions": [
-        "CAMERA",
-        "PHOTO_LIBRARY"
-      ]
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
